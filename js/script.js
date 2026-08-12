@@ -367,10 +367,58 @@ const modais = {
 const grid = document.querySelector("#planos");
 
 function card(p) {
-  const listaApps = p.m === "200" ? apps.filter((app) => app !== "TV+") : apps;
+  const appsPorPlano = {
+    200: {
+      incluso: ["Fluid", "SKY+", "+Qnutri"],
+      turbine: ["HBO Max", "Disney+", "Globoplay", "tv"],
+    },
 
-  const appList = listaApps
-    .map((app, index) => `<div class="app a${index}">${app}</div>`)
+    300: {
+      incluso: ["Fluid", "SKY+", "+Qnutri", "TV+"],
+      turbine: ["HBO Max", "Disney+", "Globoplay", "tv"],
+    },
+
+    500: {
+      incluso: ["Deezer", "SKY+", "ExitLag", "TV+"],
+      turbine: ["HBO Max", "Disney+", "Globoplay", "tv"],
+    },
+
+    700: {
+      incluso: ["Deezer", "SKY+", "ExitLag", "Globoplay"],
+      turbine: ["HBO Max", "Disney+", "tv"],
+    },
+
+    1000: {
+      incluso: ["Deezer", "SKY+", "ExitLag", "Globoplay"],
+      turbine: ["HBO Max", "Disney+", "tv"],
+    },
+  };
+
+  const plano = appsPorPlano[p.m];
+
+  function classeApp(nome) {
+    const mapa = {
+      Fluid: "fluid",
+      "SKY+": "sky",
+      "+Qnutri": "qnutri",
+      "TV+": "tvplus",
+      "HBO Max": "hbo",
+      "Disney+": "disney",
+      Globoplay: "globoplay",
+      "tv": "appletv",
+      Deezer: "deezer",
+      ExitLag: "exitlag",
+    };
+
+    return mapa[nome] || "";
+  }
+
+  const appsInclusos = plano.incluso
+    .map((app) => `<div class="app ${classeApp(app)}">${app}</div>`)
+    .join("");
+
+  const appsTurbine = plano.turbine
+    .map((app) => `<div class="app ${classeApp(app)}">${app}</div>`)
     .join("");
 
   const listaBeneficios = beneficiosCard
@@ -379,69 +427,71 @@ function card(p) {
 
   return `
     <article
-      class="plano ${p.m === "200" ? "destaque" : ""}"
+      class="plano"
       data-megas="${p.m}"
       tabindex="0"
       role="button"
-      aria-label="Ver benefícios do plano ${p.n}"
     >
 
       <div class="plano-topo">
 
-        <span>
-          INTERNET FIBRA ÓPTICA
-        </span>
+        <span>INTERNET FIBRA ÓPTICA</span>
 
-        <h2>
-          ${p.n}
-        </h2>
+        <h2>${p.n}</h2>
 
       </div>
 
+      <div class="plano-incluso">
 
-      <div class="turbine">
+        <div class="divisor">
 
-        <span>
-          ${p.turbo ? "TURBINE SEU PLANO" : "INCLUSO NO PLANO"}
-        </span>
+          <span>INCLUSO NO PLANO</span>
 
-        ${p.turbo ? "<small>A PARTIR DE R$ 14,90</small>" : ""}
+        </div>
 
-      </div>
+        <div class="apps-grid">
 
-
-      <div class="apps-grid">
-        ${appList}
-      </div>
-
-
-      <div class="divisor">
-        <span>POR APENAS</span>
-      </div>
-
-
-      <div class="plano-valor">
-
-        <span>R$</span>
-
-        <strong>
-          ${p.r}
-        </strong>
-
-        <div class="centavos">
-
-          <span>
-            ,${p.c}
-          </span>
-
-          <small>
-            /MÊS
-          </small>
+          ${appsInclusos}
 
         </div>
 
       </div>
 
+      <div class="turbine">
+
+        <span>TURBINE SEU PLANO</span>
+
+        <small>A PARTIR DE R$ 14,90</small>
+
+      </div>
+
+      <div class="apps-grid">
+
+        ${appsTurbine}
+
+      </div>
+
+      <div class="divisor">
+
+        <span>POR APENAS</span>
+
+      </div>
+
+      <div class="plano-valor">
+
+        <span>R$</span>
+
+        <strong>${p.r}</strong>
+
+        <div class="centavos">
+
+          <span>,${p.c}</span>
+
+          <small>/MÊS</small>
+
+        </div>
+
+      </div>
 
       <button
         class="btn-assinar"
@@ -450,9 +500,10 @@ function card(p) {
         VER BENEFÍCIOS
       </button>
 
-
       <div class="beneficios">
+
         ${listaBeneficios}
+
       </div>
 
     </article>

@@ -591,3 +591,46 @@ body {
     padding-right: 34px;
   }
 }
+.plano-incluso {
+  margin-bottom: 12px;
+}
+
+.app.fluid {
+  background: #168cac;
+}
+
+.app.sky {
+  background: #cf201c;
+}
+
+.app.qnutri {
+  background: #cf201c;
+}
+
+.app.tvplus {
+  background: #ed8800;
+}
+
+.app.hbo {
+  background: #101010;
+}
+
+.app.disney {
+  background: #0a3455;
+}
+
+.app.globoplay {
+  background: #cf201c;
+}
+
+.app.appletv {
+  background: #101010;
+}
+
+.app.deezer {
+  background: #8a2be2;
+}
+
+.app.exitlag {
+  background: #101010;
+}
