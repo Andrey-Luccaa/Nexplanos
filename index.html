@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planos Nex Telecom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="images/logo-favicon.png" type="image/x-icon">
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="navbox1">
+        <div class="logo">
+          <a href=""><img src="images/LOGO-001-1024x252.png" alt="" id="logo"></a>
+        </div>
+      </div>
+      <div class="navbox2">
+        <div class="pesquisa">
+          <input type="text" placeholder="Pesquisar plano..." id="pesquisar" />
+        </div>
+      </div>
+      <div class="navbox3">
+        <nav class="topicos">
+          <button class="topicos-box active" data-plano="200">200 MB</button
+          ><button class="topicos-box" data-plano="300">300 MB</button
+          ><button class="topicos-box" data-plano="500">500 MB</button
+          ><button class="topicos-box" data-plano="700">700 MB</button
+          ><button class="topicos-box" data-plano="1000">1000 MB</button
+          ><button class="esp-topicos-box" data-extra="advanced">
+            ADVANCED</button
+          ><button class="esp-topicos-box" data-extra="top">TOP</button
+          ><button class="esp-topicos-box" data-extra="premium">PREMIUM</button
+          ><a href="https://playhub.rds.land/como-logar-brasil"><button class="topicos-box">COMO LOGAR</button></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="background-orb orb1"></div>
+      <div class="background-orb orb2"></div>
+      <div class="background-orb orb3"></div>
+      <section class="cont-box1">
+        <div class="box-titulo">
+          <p>NEX TELECOM</p>
+          <h1>PLANOS ATUAIS</h1>
+          <span>Escolha a velocidade ideal para você</span>
+        </div>
+        <div class="planos" id="planos"></div>
+        <div class="info-final">
+          <div class="info-icon">⚡</div>
+          <a href="https://drive.google.com/file/d/1KSPFYhtgmD-sW3nx3Gjo6JaL9n4fPscr/view?usp=sharing"><p>Portal assinante</strong></p></a>
+        </div>
+      </section>
+    </main>
+    <div class="modal-plano" id="modal-beneficios" aria-hidden="true">
+      <div class="modal-overlay"></div>
+      <div
+        class="modal-conteudo"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal-fechar" id="fechar-modal" aria-label="Fechar">
+          ×
+        </button>
+        <div class="modal-header">
+          <span id="modal-kicker">PLANO</span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-subtitle">
+            Clique em um benefício para abrir o respectivo PDF.
+          </p>
+        </div>
+        <div class="modal-links" id="modal-links"></div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
